@@ -1,13 +1,170 @@
+#:schema https://yazi-rs.github.io/schemas/yazi.json
 
 [mgr]
-show_hidden = true
 
-[opener]
-edit = [
-  { run = 'nvim "$@"', block = true, for = "unix" },
-  { run = 'nvim "$@"', block = true, for = "linux" },
-  { run = 'nvim.exe %*', block = true, for = "windows" },
+# Layout: parent | current | preview
+ratio = [2, 4, 5]
+
+# Sorting
+sort_by = "natural"
+sort_sensitive = false
+sort_reverse = false
+sort_dir_first = true
+
+# Files
+show_hidden = true
+show_symlink = true
+
+# Keep context around cursor
+scrolloff = 8
+
+# Show file sizes
+linemode = "size"
+
+# Mouse
+mouse_events = [
+    "click",
+    "scroll",
+    "touch",
+    "move",
 ]
 
+
+# ╭──────────────────────────────────────────╮
+# │                 OPENERS                  │
+# ╰──────────────────────────────────────────╯
+
+# Neovim
+[[opener.edit]]
+run = 'nvim %s'
+block = true
+desc = "Edit with Neovim"
+for = "unix"
+
+
+# PDF
+[[opener.pdf]]
+run = 'zathura %s'
+orphan = true
+desc = "Open PDF with Zathura"
+for = "unix"
+
+
+# Video
+[[opener.video]]
+run = 'mpv %s'
+orphan = true
+desc = "Play with MPV"
+for = "unix"
+
+
+# Audio
+[[opener.audio]]
+run = 'mpv %s'
+orphan = true
+desc = "Play with MPV"
+for = "unix"
+
+
+# Images
+[[opener.image]]
+run = 'imv %s'
+orphan = true
+desc = "Open image with imv"
+for = "unix"
+
+
+# System default
+[[opener.open]]
+run = 'xdg-open %s'
+orphan = true
+desc = "Open with default application"
+for = "unix"
+
+
+# ╭──────────────────────────────────────────╮
+# │                OPEN RULES                │
+# ╰──────────────────────────────────────────╯
+
 [open]
-rules = [{ mime = "text/*", use = "edit" }]
+
+prepend_rules = [
+
+    # ───────── Text / Code ─────────
+
+    { mime = "text/*", use = "edit" },
+
+    { url = "*.txt", use = "edit" },
+    { url = "*.md", use = "edit" },
+    { url = "*.markdown", use = "edit" },
+
+    { url = "*.json", use = "edit" },
+    { url = "*.toml", use = "edit" },
+    { url = "*.yaml", use = "edit" },
+    { url = "*.yml", use = "edit" },
+    { url = "*.xml", use = "edit" },
+    { url = "*.csv", use = "edit" },
+
+    { url = "*.c", use = "edit" },
+    { url = "*.h", use = "edit" },
+    { url = "*.cpp", use = "edit" },
+    { url = "*.hpp", use = "edit" },
+
+    { url = "*.py", use = "edit" },
+    { url = "*.js", use = "edit" },
+    { url = "*.ts", use = "edit" },
+    { url = "*.jsx", use = "edit" },
+    { url = "*.tsx", use = "edit" },
+
+    { url = "*.rs", use = "edit" },
+    { url = "*.go", use = "edit" },
+    { url = "*.java", use = "edit" },
+
+    { url = "*.lua", use = "edit" },
+    { url = "*.sh", use = "edit" },
+    { url = "*.bash", use = "edit" },
+    { url = "*.zsh", use = "edit" },
+    { url = "*.fish", use = "edit" },
+
+    { url = "*.conf", use = "edit" },
+    { url = "*.config", use = "edit" },
+
+    { url = "*.css", use = "edit" },
+    { url = "*.scss", use = "edit" },
+    { url = "*.html", use = "edit" },
+
+    # ───────── PDF ─────────
+
+    { mime = "application/pdf", use = "pdf" },
+
+    # ───────── Images ─────────
+
+    { mime = "image/*", use = "image" },
+
+    # ───────── Video ─────────
+
+    { mime = "video/*", use = "video" },
+
+    # ───────── Audio ─────────
+
+    { mime = "audio/*", use = "audio" },
+]
+
+
+# ╭──────────────────────────────────────────╮
+# │                 PREVIEW                  │
+# ╰──────────────────────────────────────────╯
+
+[preview]
+
+wrap = "yes"
+tab_size = 2
+
+max_width = 1200
+max_height = 900
+
+image_delay = 30
+image_filter = "lanczos3"
+image_quality = 85
+
+

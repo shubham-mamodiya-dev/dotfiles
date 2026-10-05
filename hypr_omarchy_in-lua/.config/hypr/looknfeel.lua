@@ -7,7 +7,7 @@ hl.config({
     gaps_in = 1,
     gaps_out = 1,
     border_size = 0,
-
+    resize_on_border = true,
     -- Change to niri-like side-scrolling layout.
     -- layout = "scrolling",
   },

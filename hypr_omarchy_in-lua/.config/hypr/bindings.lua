@@ -23,7 +23,7 @@
 -- Disable a default binding without replacing it.
 -- hl.unbind("SUPER + SHIFT + B")
 -- Unbind the default Nautilus launcher
-hl.unbind("SUPER + SHIFT + F")
+-- hl.unbind("SUPER + SHIFT + F")
 hl.unbind("SUPER + SHIFT + C", "Calendar", { webapp = "https://app.hey.com/calendar/weeks/" })
 hl.unbind("SUPER + SHIFT + ALT + A", "Grok", { webapp = "https://grok.com" })
 hl.unbind("SUPER + SHIFT + M", "Music", { omarchy = "spotify" })
@@ -37,15 +37,15 @@ hl.unbind("SUPER + SHIFT + P", "Google Photos", { webapp = "https://photos.googl
 hl.unbind("SUPER + SHIFT + S", "Google Maps", { webapp = "https://maps.google.com/", focus = true })
 hl.unbind("SUPER + SHIFT + X", "X", { webapp = "https://x.com/" })
 hl.unbind("SUPER + SHIFT + ALT + X", "X Post", { webapp = "https://x.com/compose/post" })
-hl.unbind("SUPER + ALT + SHIFT + F", "File manager (cwd)", { omarchy = "nautilus-cwd" })
+-- hl.unbind("SUPER + ALT + SHIFT + F", "File manager (cwd)", { omarchy = "nautilus-cwd" })
+
 --
 -- Logitech MX Keys examples:
 -- o.bind("SUPER + SHIFT + S", nil, "omarchy-capture-screenshot")
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
 -- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
 -- Essential application bindings.
-o.bind("SUPER + SHIFT + F", "File manager", "xdg-terminal-exec yazi")
-o.bind("SUPER + SHIFT + Y", "File manager", { omarchy = "nautilus" })
+o.bind("SUPER + SHIFT + Y", "File manager", "xdg-terminal-exec yazi")
 o.bind("SUPER + SHIFT + ALT + A", "gemini", { webapp = "https://gemini.google.com" })
 --
 o.bind("SUPER + bracketright", "Next Background", "omarchy-bg-next")
@@ -53,3 +53,13 @@ o.bind("SUPER + bracketright", "Next Background", "omarchy-bg-next")
 o.bind("SUPER + bracketleft", "Next Background", "omarchy-bg-prev")
 
 o.bind("SUPER + SHIFT + bracketright", "Next Background", "omarchy-bg-random")
+
+o.bind("SUPER + SHIFT + X", "Turn off Mouse rgb", hl.dsp.exec_cmd("openrgb --profile turn-off-rgb.orp"))
+
+
+o.bind("SUPER + SHIFT + P", "Document Viewer", "evince")
+
+o.bind("SUPER + SHIFT + H", "Focus on left window", hl.dsp.focus({ direction = "l" }))
+o.bind("SUPER + SHIFT + L", "Focus on right window", hl.dsp.focus({ direction = "r" }))
+o.bind("SUPER + SHIFT + K", "Focus on above window", hl.dsp.focus({ direction = "u" }))
+o.bind("SUPER + SHIFT + J", "Focus on below window", hl.dsp.focus({ direction = "d" }))
